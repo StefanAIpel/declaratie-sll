@@ -294,7 +294,7 @@
         </div>
         
         <div class="form-content" id="formContent">
-            <form name="declaratie-2025" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" id="declaratieForm">
+            <form name="declaratie-2025" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" id="declaratieForm">
                 <input type="hidden" name="form-name" value="declaratie-2025">
                 <p style="display:none">
                     <label>Don't fill this out: <input name="bot-field"></label>
@@ -549,31 +549,6 @@
             } else {
                 fileList.innerHTML = '';
             }
-        });
-        
-        // Form submission
-        document.getElementById('declaratieForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const form = e.target;
-            const formData = new FormData(form);
-            
-            fetch('/', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    document.getElementById('formContent').style.display = 'none';
-                    document.getElementById('successContainer').style.display = 'block';
-                    window.scrollTo(0, 0);
-                } else {
-                    alert('Er ging iets mis. Probeer het opnieuw of neem contact op met de administratie.');
-                }
-            })
-            .catch(error => {
-                alert('Er ging iets mis. Probeer het opnieuw of neem contact op met de administratie.');
-            });
         });
         
         // Initialize

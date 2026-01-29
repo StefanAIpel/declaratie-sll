@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaratie ingediend! - Slingerland Techniek</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a5a3a 0%, #2d8a5e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #1a5a3a;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .emails {
+            background: #f0f9f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .emails strong {
+            color: #1a5a3a;
+            display: block;
+            margin: 5px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #1a5a3a 0%, #2d8a5e 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(26, 90, 58, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✅</div>
+        <h1>Declaratie ingediend!</h1>
+        <p>Je declaratie is succesvol verstuurd.</p>
+        
+        <div class="emails">
+            <p>De administratie ontvangt je declaratie op:</p>
+            <strong>stefan@slingerlandtechniek.nl</strong>
+            <strong>administratie@slingerlandtechniek.nl</strong>
+        </div>
+        
+        <p>Je hoeft verder niets te doen. Bij vragen nemen we contact met je op.</p>
+        
+        <a href="/" class="btn">📝 Nieuwe declaratie indienen</a>
+    </div>
+</body>
+</html>
