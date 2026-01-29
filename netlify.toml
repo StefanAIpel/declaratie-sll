@@ -1,0 +1,14 @@
+[build]
+  publish = "."
+
+# Form notifications - email on submission
+[[plugins]]
+  package = "@netlify/plugin-emails"
+
+# Note: Form submissions will be visible in Netlify dashboard
+# Email notifications can be configured in:
+# Site Settings → Forms → Form notifications → Add notification → Email
+#
+# Add these emails:
+# - administratie@slingerlandtechniek.nl
+# - stefan.dijkstra@slingerlandtechniek.nl

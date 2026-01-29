@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit & Vitaal Declaratie 2025 H2 - Slingerland Techniek</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a5a3a 0%, #2d8a5e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #1a5a3a;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .form-content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: 1.2em;
+            color: #1a5a3a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .label-hint {
+            font-weight: normal;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #2d8a5e;
+        }
+        
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        @media (max-width: 500px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .budget-display {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .budget-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        .budget-row:last-child {
+            margin-bottom: 0;
+            padding-top: 10px;
+            border-top: 2px solid #a5d6a7;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #1a5a3a;
+        }
+        
+        .budget-row.used {
+            color: #e65100;
+        }
+        
+        .budget-row.remaining {
+            color: #1a5a3a;
+        }
+        
+        .months-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 500px) {
+            .months-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .month-input {
+            text-align: center;
+        }
+        
+        .month-input label {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .month-input input {
+            text-align: center;
+        }
+        
+        .total-display {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .total-display .amount {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #e65100;
+        }
+        
+        .file-upload {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .file-upload:hover {
+            border-color: #2d8a5e;
+            background: #f8fff8;
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .file-upload-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1a5a3a 0%, #2d8a5e 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(26, 90, 58, 0.3);
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        
+        .deadline-warning {
+            background: #fff8e1;
+            border-left: 4px solid #ffa000;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        /* Success page */
+        .success-container {
+            display: none;
+            text-align: center;
+            padding: 60px 30px;
+        }
+        
+        .success-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .success-container h2 {
+            color: #1a5a3a;
+            margin-bottom: 15px;
+        }
+        
+        .success-container p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💪 Fit & Vitaal Declaratie</h1>
+            <p>Periode: juli t/m december 2025</p>
+        </div>
+        
+        <div class="form-content" id="formContent">
+            <form name="declaratie-2025" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" id="declaratieForm">
+                <input type="hidden" name="form-name" value="declaratie-2025">
+                <p style="display:none">
+                    <label>Don't fill this out: <input name="bot-field"></label>
+                </p>
+                
+                <!-- Persoonlijke gegevens -->
+                <div class="section">
+                    <h2 class="section-title">👤 Persoonlijke gegevens</h2>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="naam">Volledige naam *</label>
+                            <input type="text" id="naam" name="naam" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mailadres *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="afdeling">Afdeling *</label>
+                            <select id="afdeling" name="afdeling" required>
+                                <option value="">Selecteer...</option>
+                                <option value="Productie">Productie</option>
+                                <option value="Kantoor">Kantoor</option>
+                                <option value="Verkoop">Verkoop</option>
+                                <option value="Magazijn">Magazijn</option>
+                                <option value="Technische dienst">Technische dienst</option>
+                                <option value="Anders">Anders</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="percentage">Parttime percentage * <span class="label-hint">(bijv. 75, 84, 100)</span></label>
+                            <input type="number" id="percentage" name="percentage" min="1" max="100" step="1" placeholder="100" required oninput="berekenBudget()">
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-group" onclick="this.querySelector('input').click()">
+                        <input type="checkbox" id="leaseabike" name="leaseabike" value="ja" onchange="berekenBudget()">
+                        <label for="leaseabike" style="margin: 0; cursor: pointer;">
+                            🚴 Ik maak gebruik van Lease-a-Bike (+€12,50/maand extra budget)
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Budget overzicht -->
+                <div class="section">
+                    <h2 class="section-title">💰 Budget</h2>
+                    
+                    <div class="form-group">
+                        <label for="reeds_verbruikt">Reeds verbruikt budget in 2025 (€) <span class="label-hint">(H1 + eerdere declaraties)</span></label>
+                        <input type="number" id="reeds_verbruikt" name="reeds_verbruikt" min="0" step="0.01" placeholder="0.00" oninput="berekenBudget()">
+                    </div>
+                    
+                    <div class="budget-display">
+                        <div class="budget-row">
+                            <span>Basisbudget (6 maanden):</span>
+                            <span id="basisBudget">€300,00</span>
+                        </div>
+                        <div class="budget-row">
+                            <span>Lease-a-Bike bonus:</span>
+                            <span id="bikeBonus">€0,00</span>
+                        </div>
+                        <div class="budget-row">
+                            <span>Jouw totaal budget H2:</span>
+                            <span id="totaalBudget">€300,00</span>
+                        </div>
+                        <div class="budget-row used">
+                            <span>Reeds verbruikt:</span>
+                            <span id="verbruiktDisplay">€0,00</span>
+                        </div>
+                        <div class="budget-row remaining">
+                            <span>Nog beschikbaar:</span>
+                            <span id="beschikbaarBudget">€300,00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Type activiteit -->
+                <div class="section">
+                    <h2 class="section-title">🏃 Type activiteit</h2>
+                    
+                    <div class="form-group">
+                        <label for="activiteit">Waarvoor declareer je? *</label>
+                        <select id="activiteit" name="activiteit" required>
+                            <option value="">Selecteer...</option>
+                            <option value="Sportschool/Fitness">Sportschool / Fitness</option>
+                            <option value="Groepslessen">Groepslessen (spinning, yoga, etc.)</option>
+                            <option value="Personal Training">Personal Training</option>
+                            <option value="Zwembad">Zwembad abonnement</option>
+                            <option value="Sportvereniging">Sportvereniging</option>
+                            <option value="Massage/Fysiotherapie">Massage / Fysiotherapie</option>
+                            <option value="Wellness/Sauna">Wellness / Sauna</option>
+                            <option value="Mindfulness/Meditatie">Mindfulness / Meditatie</option>
+                            <option value="Anders">Anders</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="omschrijving">Omschrijving <span class="label-hint">(optioneel - bijv. naam sportschool)</span></label>
+                        <input type="text" id="omschrijving" name="omschrijving" placeholder="Bijv. Basic Fit Amersfoort">
+                    </div>
+                </div>
+                
+                <!-- Kosten per maand -->
+                <div class="section">
+                    <h2 class="section-title">📅 Kosten per maand</h2>
+                    
+                    <div class="info-box">
+                        💡 Vul per maand het bedrag in dat je wilt declareren. Laat op €0 staan als je die maand niets declareert.
+                    </div>
+                    
+                    <div class="months-grid">
+                        <div class="month-input">
+                            <label for="juli">Juli</label>
+                            <input type="number" id="juli" name="kosten_juli" min="0" step="0.01" value="0" oninput="berekenTotaal()">
+                        </div>
+                        <div class="month-input">
+                            <label for="augustus">Augustus</label>
+                            <input type="number" id="augustus" name="kosten_augustus" min="0" step="0.01" value="0" oninput="berekenTotaal()">
+                        </div>
+                        <div class="month-input">
+                            <label for="september">September</label>
+                            <input type="number" id="september" name="kosten_september" min="0" step="0.01" value="0" oninput="berekenTotaal()">
+                        </div>
+                        <div class="month-input">
+                            <label for="oktober">Oktober</label>
+                            <input type="number" id="oktober" name="kosten_oktober" min="0" step="0.01" value="0" oninput="berekenTotaal()">
+                        </div>
+                        <div class="month-input">
+                            <label for="november">November</label>
+                            <input type="number" id="november" name="kosten_november" min="0" step="0.01" value="0" oninput="berekenTotaal()">
+                        </div>
+                        <div class="month-input">
+                            <label for="december">December</label>
+                            <input type="number" id="december" name="kosten_december" min="0" step="0.01" value="0" oninput="berekenTotaal()">
+                        </div>
+                    </div>
+                    
+                    <div class="total-display">
+                        <div>Totaal te declareren:</div>
+                        <div class="amount" id="totaalDeclaratie">€0,00</div>
+                        <input type="hidden" id="totaal_bedrag" name="totaal_bedrag" value="0">
+                    </div>
+                </div>
+                
+                <!-- Bijlagen -->
+                <div class="section">
+                    <h2 class="section-title">📎 Bijlagen</h2>
+                    
+                    <div class="info-box">
+                        📄 Upload je facturen en/of betaalbewijzen (bankafschrift, tikkie, etc.)
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="file-upload" for="bijlagen">
+                            <div class="file-upload-icon">📁</div>
+                            <div>Klik om bestanden te selecteren</div>
+                            <div style="font-size: 0.9em; color: #666; margin-top: 5px;">of sleep ze hierheen</div>
+                            <input type="file" id="bijlagen" name="bijlagen" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx">
+                        </label>
+                        <div id="fileList" style="margin-top: 10px; font-size: 0.9em; color: #666;"></div>
+                    </div>
+                </div>
+                
+                <!-- IBAN -->
+                <div class="section">
+                    <h2 class="section-title">🏦 Uitbetaling</h2>
+                    
+                    <div class="form-group">
+                        <label for="iban">IBAN rekeningnummer *</label>
+                        <input type="text" id="iban" name="iban" placeholder="NL00 BANK 0000 0000 00" required>
+                    </div>
+                </div>
+                
+                <!-- Opmerkingen -->
+                <div class="section">
+                    <h2 class="section-title">💬 Opmerkingen</h2>
+                    
+                    <div class="form-group">
+                        <label for="opmerkingen">Eventuele opmerkingen</label>
+                        <textarea id="opmerkingen" name="opmerkingen" rows="3" placeholder="Optioneel"></textarea>
+                    </div>
+                </div>
+                
+                <div class="deadline-warning">
+                    ⏰ <strong>Deadline: 28 februari 2026</strong><br>
+                    Declaraties na deze datum worden niet meer verwerkt.
+                </div>
+                
+                <button type="submit" class="submit-btn">✅ Declaratie indienen</button>
+            </form>
+        </div>
+        
+        <!-- Success message -->
+        <div class="success-container" id="successContainer">
+            <div class="success-icon">✅</div>
+            <h2>Declaratie ingediend!</h2>
+            <p>Je declaratie is succesvol verstuurd naar:</p>
+            <p><strong>stefan@slingerlandtechniek.nl</strong></p>
+            <p><strong>administratie@slingerlandtechniek.nl</strong></p>
+            <p style="margin-top: 20px;">Je ontvangt een bevestiging per e-mail.</p>
+            <button onclick="location.reload()" class="submit-btn" style="margin-top: 30px; max-width: 300px;">📝 Nieuwe declaratie</button>
+        </div>
+    </div>
+    
+    <script>
+        function berekenBudget() {
+            const percentage = parseFloat(document.getElementById('percentage').value) || 100;
+            const leaseabike = document.getElementById('leaseabike').checked;
+            const verbruikt = parseFloat(document.getElementById('reeds_verbruikt').value) || 0;
+            
+            // €50 per maand × 6 maanden × parttime percentage
+            const basis = (50 * 6) * (percentage / 100);
+            // Lease-a-bike bonus: €12,50 × 6 maanden
+            const bonus = leaseabike ? (12.50 * 6) : 0;
+            const totaal = basis + bonus;
+            const beschikbaar = Math.max(0, totaal - verbruikt);
+            
+            document.getElementById('basisBudget').textContent = '€' + basis.toFixed(2).replace('.', ',');
+            document.getElementById('bikeBonus').textContent = '€' + bonus.toFixed(2).replace('.', ',');
+            document.getElementById('totaalBudget').textContent = '€' + totaal.toFixed(2).replace('.', ',');
+            document.getElementById('verbruiktDisplay').textContent = '€' + verbruikt.toFixed(2).replace('.', ',');
+            document.getElementById('beschikbaarBudget').textContent = '€' + beschikbaar.toFixed(2).replace('.', ',');
+        }
+        
+        function berekenTotaal() {
+            const maanden = ['juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+            let totaal = 0;
+            
+            maanden.forEach(maand => {
+                totaal += parseFloat(document.getElementById(maand).value) || 0;
+            });
+            
+            document.getElementById('totaalDeclaratie').textContent = '€' + totaal.toFixed(2).replace('.', ',');
+            document.getElementById('totaal_bedrag').value = totaal.toFixed(2);
+        }
+        
+        // File upload display
+        document.getElementById('bijlagen').addEventListener('change', function() {
+            const fileList = document.getElementById('fileList');
+            const files = this.files;
+            
+            if (files.length > 0) {
+                let html = '<strong>Geselecteerde bestanden:</strong><br>';
+                for (let i = 0; i < files.length; i++) {
+                    html += '📄 ' + files[i].name + '<br>';
+                }
+                fileList.innerHTML = html;
+            } else {
+                fileList.innerHTML = '';
+            }
+        });
+        
+        // Form submission
+        document.getElementById('declaratieForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            fetch('/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('formContent').style.display = 'none';
+                    document.getElementById('successContainer').style.display = 'block';
+                    window.scrollTo(0, 0);
+                } else {
+                    alert('Er ging iets mis. Probeer het opnieuw of neem contact op met de administratie.');
+                }
+            })
+            .catch(error => {
+                alert('Er ging iets mis. Probeer het opnieuw of neem contact op met de administratie.');
+            });
+        });
+        
+        // Initialize
+        berekenBudget();
+        berekenTotaal();
+    </script>
+</body>
+</html>
