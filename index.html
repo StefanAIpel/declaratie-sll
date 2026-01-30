@@ -11,9 +11,17 @@
             padding: 0;
         }
         
+        :root {
+            --sll-blauw: #1a3a5c;
+            --sll-blauw-light: #2a5a8c;
+            --sll-oranje: #f5841f;
+            --sll-oranje-hover: #e07010;
+            --sll-grijs: #f5f5f5;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1a5a3a 0%, #2d8a5e 100%);
+            background: linear-gradient(135deg, var(--sll-blauw) 0%, var(--sll-blauw-light) 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -23,15 +31,16 @@
             margin: 0 auto;
             background: white;
             border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             overflow: hidden;
         }
         
         .header {
-            background: #1a5a3a;
+            background: var(--sll-blauw);
             color: white;
             padding: 30px;
             text-align: center;
+            border-bottom: 5px solid var(--sll-oranje);
         }
         
         .header h1 {
@@ -42,6 +51,11 @@
         .header p {
             opacity: 0.9;
             font-size: 1.1em;
+        }
+        
+        .logo {
+            font-size: 2em;
+            margin-bottom: 10px;
         }
         
         .form-content {
@@ -61,11 +75,13 @@
         
         .section-title {
             font-size: 1.2em;
-            color: #1a5a3a;
+            color: var(--sll-blauw);
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 8px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--sll-oranje);
         }
         
         .form-group {
@@ -76,13 +92,18 @@
             display: block;
             margin-bottom: 5px;
             font-weight: 500;
-            color: #333;
+            color: var(--sll-blauw);
         }
         
         .label-hint {
             font-weight: normal;
             color: #666;
             font-size: 0.9em;
+        }
+        
+        .required::after {
+            content: " *";
+            color: var(--sll-oranje);
         }
         
         input[type="text"],
@@ -102,7 +123,7 @@
         select:focus,
         textarea:focus {
             outline: none;
-            border-color: #2d8a5e;
+            border-color: var(--sll-oranje);
         }
         
         .row {
@@ -122,22 +143,30 @@
             align-items: center;
             gap: 10px;
             padding: 12px;
-            background: #f8f9fa;
+            background: var(--sll-grijs);
             border-radius: 8px;
             cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        .checkbox-group:hover {
+            border-color: var(--sll-oranje);
         }
         
         .checkbox-group input[type="checkbox"] {
             width: 20px;
             height: 20px;
             cursor: pointer;
+            accent-color: var(--sll-oranje);
         }
         
         .budget-display {
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            background: linear-gradient(135deg, #e8f0f8 0%, #d0e0f0 100%);
             padding: 20px;
             border-radius: 12px;
             margin: 20px 0;
+            border-left: 4px solid var(--sll-oranje);
         }
         
         .budget-row {
@@ -150,18 +179,18 @@
         .budget-row:last-child {
             margin-bottom: 0;
             padding-top: 10px;
-            border-top: 2px solid #a5d6a7;
+            border-top: 2px solid var(--sll-blauw-light);
             font-weight: bold;
             font-size: 1.2em;
-            color: #1a5a3a;
+            color: var(--sll-blauw);
         }
         
         .budget-row.used {
-            color: #e65100;
+            color: var(--sll-oranje);
         }
         
         .budget-row.remaining {
-            color: #1a5a3a;
+            color: var(--sll-blauw);
         }
         
         .months-grid {
@@ -196,16 +225,17 @@
             border-radius: 8px;
             margin-top: 15px;
             text-align: center;
+            border: 2px solid var(--sll-oranje);
         }
         
         .total-display .amount {
             font-size: 1.5em;
             font-weight: bold;
-            color: #e65100;
+            color: var(--sll-oranje);
         }
         
         .file-upload {
-            border: 2px dashed #ccc;
+            border: 2px dashed var(--sll-blauw-light);
             border-radius: 8px;
             padding: 30px;
             text-align: center;
@@ -214,8 +244,8 @@
         }
         
         .file-upload:hover {
-            border-color: #2d8a5e;
-            background: #f8fff8;
+            border-color: var(--sll-oranje);
+            background: #fff8f0;
         }
         
         .file-upload input {
@@ -230,7 +260,7 @@
         .submit-btn {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #1a5a3a 0%, #2d8a5e 100%);
+            background: linear-gradient(135deg, var(--sll-oranje) 0%, var(--sll-oranje-hover) 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -242,12 +272,12 @@
         
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(26, 90, 58, 0.3);
+            box-shadow: 0 5px 20px rgba(245, 132, 31, 0.4);
         }
         
         .info-box {
-            background: #e3f2fd;
-            border-left: 4px solid #1976d2;
+            background: #e8f4fc;
+            border-left: 4px solid var(--sll-blauw);
             padding: 15px;
             border-radius: 0 8px 8px 0;
             margin: 15px 0;
@@ -255,8 +285,8 @@
         }
         
         .deadline-warning {
-            background: #fff8e1;
-            border-left: 4px solid #ffa000;
+            background: #fff8e8;
+            border-left: 4px solid var(--sll-oranje);
             padding: 15px;
             border-radius: 0 8px 8px 0;
             margin: 20px 0;
@@ -276,7 +306,7 @@
         }
         
         .success-container h2 {
-            color: #1a5a3a;
+            color: var(--sll-blauw);
             margin-bottom: 15px;
         }
         
@@ -284,18 +314,33 @@
             color: #666;
             margin-bottom: 10px;
         }
+        
+        /* Slingerland branding */
+        .footer {
+            background: var(--sll-blauw);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        
+        .footer a {
+            color: var(--sll-oranje);
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>💪 Fit & Vitaal Declaratie</h1>
-            <p>Periode: juli t/m december 2025</p>
+            <div class="logo">🏭</div>
+            <h1>Fit & Vitaal Declaratie</h1>
+            <p>Slingerland Techniek • H2 2025</p>
         </div>
         
         <div class="form-content" id="formContent">
-            <form name="declaratie-2025" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" id="declaratieForm">
-                <input type="hidden" name="form-name" value="declaratie-2025">
+            <form name="declaratie-2025-sll" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" id="declaratieForm">
+                <input type="hidden" name="form-name" value="declaratie-2025-sll">
                 <p style="display:none">
                     <label>Don't fill this out: <input name="bot-field"></label>
                 </p>
@@ -306,18 +351,18 @@
                     
                     <div class="row">
                         <div class="form-group">
-                            <label for="naam">Volledige naam *</label>
+                            <label for="naam" class="required">Volledige naam</label>
                             <input type="text" id="naam" name="naam" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">E-mailadres *</label>
+                            <label for="email" class="required">E-mailadres</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class="form-group">
-                            <label for="afdeling">Afdeling *</label>
+                            <label for="afdeling" class="required">Afdeling</label>
                             <select id="afdeling" name="afdeling" required>
                                 <option value="">Selecteer...</option>
                                 <option value="Productie">Productie</option>
@@ -329,17 +374,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="percentage">Parttime percentage * <span class="label-hint">(bijv. 75, 84, 100)</span></label>
+                            <label for="percentage" class="required">Parttime percentage <span class="label-hint">(bijv. 75, 84, 100)</span></label>
                             <input type="number" id="percentage" name="percentage" min="1" max="100" step="1" placeholder="100" required oninput="berekenBudget()">
                         </div>
                     </div>
                     
-                    <div class="checkbox-group" onclick="this.querySelector('input').click()">
+                    <label class="checkbox-group" for="leaseabike">
                         <input type="checkbox" id="leaseabike" name="leaseabike" value="ja" onchange="berekenBudget()">
-                        <label for="leaseabike" style="margin: 0; cursor: pointer;">
-                            🚴 Ik maak gebruik van Lease-a-Bike (+€12,50/maand extra budget)
-                        </label>
-                    </div>
+                        <span>🚴 Ik maak gebruik van Lease-a-Bike (+€12,50/maand extra budget)</span>
+                    </label>
                 </div>
                 
                 <!-- Budget overzicht -->
@@ -380,7 +423,7 @@
                     <h2 class="section-title">🏃 Type activiteit</h2>
                     
                     <div class="form-group">
-                        <label for="activiteit">Waarvoor declareer je? *</label>
+                        <label for="activiteit" class="required">Waarvoor declareer je?</label>
                         <select id="activiteit" name="activiteit" required>
                             <option value="">Selecteer...</option>
                             <option value="Sportschool/Fitness">Sportschool / Fitness</option>
@@ -467,7 +510,7 @@
                     <h2 class="section-title">🏦 Uitbetaling</h2>
                     
                     <div class="form-group">
-                        <label for="iban">IBAN rekeningnummer *</label>
+                        <label for="iban" class="required">IBAN rekeningnummer</label>
                         <input type="text" id="iban" name="iban" placeholder="NL00 BANK 0000 0000 00" required>
                     </div>
                 </div>
@@ -495,11 +538,13 @@
         <div class="success-container" id="successContainer">
             <div class="success-icon">✅</div>
             <h2>Declaratie ingediend!</h2>
-            <p>Je declaratie is succesvol verstuurd naar:</p>
-            <p><strong>stefan@slingerlandtechniek.nl</strong></p>
-            <p><strong>administratie@slingerlandtechniek.nl</strong></p>
-            <p style="margin-top: 20px;">Je ontvangt een bevestiging per e-mail.</p>
+            <p>Je declaratie is succesvol verstuurd.</p>
+            <p>Je ontvangt een bevestiging per e-mail.</p>
             <button onclick="location.reload()" class="submit-btn" style="margin-top: 30px; max-width: 300px;">📝 Nieuwe declaratie</button>
+        </div>
+        
+        <div class="footer">
+            Slingerland Techniek Amersfoort • <a href="mailto:administratie@slingerlandtechniek.nl">administratie@slingerlandtechniek.nl</a>
         </div>
     </div>
     
